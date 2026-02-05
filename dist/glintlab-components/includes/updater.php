@@ -17,7 +17,10 @@ if (!defined('ABSPATH')) {
 
 function glintlab_components_updater_get_repo()
 {
-	$repo = defined('GLINTLAB_COMPONENTS_GITHUB_REPO') ? (string) GLINTLAB_COMPONENTS_GITHUB_REPO : 'mewthewolf/glintlab-components';
+	$repo = defined('GLINTLAB_COMPONENTS_GITHUB_REPO') ? (string) GLINTLAB_COMPONENTS_GITHUB_REPO : '';
+	if ('' === trim($repo)) {
+		$repo = (string) get_option('glintlab_components_github_repo', 'mewthewolf/glintlab-components');
+	}
 	$repo = trim($repo);
 	if ('' === $repo || false === strpos($repo, '/')) {
 		$repo = 'mewthewolf/glintlab-components';
@@ -31,7 +34,17 @@ function glintlab_components_updater_get_token()
 		$token = trim((string) GLINTLAB_COMPONENTS_GITHUB_TOKEN);
 		return '' !== $token ? $token : '';
 	}
-	return '';
+
+	$stored = (string) get_option('glintlab_components_github_token', '');
+	if ('' === $stored) {
+		return '';
+	}
+
+	if (function_exists('glintlab_components_settings_decrypt')) {
+		return (string) glintlab_components_settings_decrypt($stored);
+	}
+
+	return $stored;
 }
 
 function glintlab_components_updater_http_request_args($args, $url)
