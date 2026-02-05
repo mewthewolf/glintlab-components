@@ -1,0 +1,245 @@
+{
+    "exportedAt": "2026-02-03T16:26:25+00:00",
+    "items": [
+        {
+            "sourcePostId": 28,
+            "title": "Ami Lau",
+            "content": "With over two decades of leadership experience spanning operations and human resources, Ami Lau brings a unique blend of strategic insight and organizational expertise to her role as COO at Glint Lab. Having spent the last decade leading operational excellence in the pathology CRO environment, Ami is dedicated to ensuring that both her team and clients have the tools and resources they need to succeed.",
+            "status": "publish",
+            "menuOrder": 0,
+            "meta": {
+                "_glintlab_team_role": "Chief Operations Officer",
+                "_glintlab_team_link_url": "https://www.linkedin.com/in/ami-lau/"
+            },
+            "featuredImage": {
+                "file": "28-Ami-Histopathology.webp",
+                "alt": "",
+                "mime": "image/webp"
+            }
+        },
+        {
+            "sourcePostId": 20,
+            "title": "Auto Draft",
+            "content": "",
+            "status": "auto-draft",
+            "menuOrder": 0,
+            "meta": {
+                "_glintlab_team_role": "",
+                "_glintlab_team_link_url": ""
+            },
+            "featuredImage": null
+        },
+        {
+            "sourcePostId": 21,
+            "title": "Auto Draft",
+            "content": "",
+            "status": "auto-draft",
+            "menuOrder": 0,
+            "meta": {
+                "_glintlab_team_role": "",
+                "_glintlab_team_link_url": ""
+            },
+            "featuredImage": null
+        },
+        {
+            "sourcePostId": 22,
+            "title": "Auto Draft",
+            "content": "",
+            "status": "auto-draft",
+            "menuOrder": 0,
+            "meta": {
+                "_glintlab_team_role": "",
+                "_glintlab_team_link_url": ""
+            },
+            "featuredImage": null
+        },
+        {
+            "sourcePostId": 23,
+            "title": "Auto Draft",
+            "content": "",
+            "status": "auto-draft",
+            "menuOrder": 0,
+            "meta": {
+                "_glintlab_team_role": "",
+                "_glintlab_team_link_url": ""
+            },
+            "featuredImage": null
+        },
+        {
+            "sourcePostId": 32,
+            "title": "Brendan Harris, HTL (ASCP)",
+            "content": "Brendan leads the production and management of high-volume whole slide imaging at Glint Lab with a focus on accuracy and efficiency. With hands-on expertise in digital pathology platforms like 3DHistech, Leica, and Zeiss, he plays a key role in delivering optimized imaging data across diverse research studies.",
+            "status": "publish",
+            "menuOrder": 0,
+            "meta": {
+                "_glintlab_team_role": "Imaging Specialist",
+                "_glintlab_team_link_url": "https://www.linkedin.com/in/brendan-harris-htl-ascp-067618252"
+            },
+            "featuredImage": {
+                "file": "32-Histopathology-Design-33.webp",
+                "alt": "",
+                "mime": "image/webp"
+            }
+        },
+        {
+            "sourcePostId": 34,
+            "title": "Erika Hong, HTL (ASCP)",
+            "content": "Erika Hong has extensive experience in histology, including antibody optimization, IHC, IF, and in situ hybridization across multiple tissue types. She has led technical teams and managed high-volume study execution. At Glint Lab, Erika supports routine and custom protocols with expertise in sectioning, staining, and troubleshooting, ensuring consistent quality and timely delivery of research data.",
+            "status": "publish",
+            "menuOrder": 0,
+            "meta": {
+                "_glintlab_team_role": "Histology Manager",
+                "_glintlab_team_link_url": "https://www.linkedin.com/in/erika-hong-htl-ascp-6647b7125/"
+            },
+            "featuredImage": {
+                "file": "34-Histopathology-Image.webp",
+                "alt": "",
+                "mime": "image/webp"
+            }
+        },
+        {
+            "sourcePostId": 11,
+            "title": "Isaiah Prescott",
+            "content": "Demo Text",
+            "status": "trash",
+            "menuOrder": 0,
+            "meta": {
+                "_glintlab_team_role": "Junior Developer",
+                "_glintlab_team_link_url": ""
+            },
+            "featuredImage": {
+                "file": "11-FUduVPRVEAAIKuv.jpeg",
+                "alt": "",
+                "mime": "image/jpeg"
+            }
+        },
+        {
+            "sourcePostId": 40,
+            "title": "Jason Roberts",
+            "content": "Jason brings an in-depth understanding of computational pathology and image analysis, with experience in both preclinical and clinical applications. Having worked across CROs and analysis software providers, he applies advanced machine learning and computer vision techniques to turn complex biological data into meaningful insights, driving innovation in diagnostic and therapeutic solutions.",
+            "status": "publish",
+            "menuOrder": 0,
+            "meta": {
+                "_glintlab_team_role": "Director of Image Analysis",
+                "_glintlab_team_link_url": "http://linkedin.com/in/jason-roberts-76a25717a/"
+            },
+            "featuredImage": {
+                "file": "40-Histopathology-Jason.webp",
+                "alt": "",
+                "mime": "image/webp"
+            }
+        },
+        {
+            "sourcePostId": 30,
+            "title": "Laarni Gapuz",
+            "content": "With over 30 years of experience, Laarni is a master of precision histology, specializing in H&amp;E and special stains across a wide range of species. Her expertise spans tissue processing, sectioning, and grossing, honed through decades in clinical labs, research institutions, biotech, and pharma. At Glint Lab, she delivers unmatched quality in every slide.",
+            "status": "publish",
+            "menuOrder": 0,
+            "meta": {
+                "_glintlab_team_role": "Senior Research Associate",
+                "_glintlab_team_link_url": ""
+            },
+            "featuredImage": {
+                "file": "30-Histopathology-Design-34.webp",
+                "alt": "",
+                "mime": "image/webp"
+            }
+        },
+        {
+            "sourcePostId": 24,
+            "title": "Misagh Naderi, PhD",
+            "content": "Misagh’s career spans biotechnology, IP law, and technology commercialization, enabling him to build long-term relationships and strategic collaborations to support Glint Lab’s growth. Backed by expertise in computational biology, virology, chemical engineering, and AI-driven solutions, he strives to position Glint Lab as a technologically advanced CRO offering cutting-edge solutions with unparalleled quality.",
+            "status": "publish",
+            "menuOrder": 0,
+            "meta": {
+                "_glintlab_team_role": "Chief Executive Officer",
+                "_glintlab_team_link_url": "https://www.linkedin.com/in/misaghnaderi/"
+            },
+            "featuredImage": {
+                "file": "24-Misagh-400x400-1.webp",
+                "alt": "",
+                "mime": "image/webp"
+            }
+        },
+        {
+            "sourcePostId": 26,
+            "title": "Oanh Nguyen",
+            "content": "Oanh brings over a decade of expertise in histopathology, with a deep understanding of the entire histopathology workflow. As CSO at Glint Lab, she consults with clients on routine and complex studies, ensuring scientific precision. Oanh oversees study design, execution, and quality control with exceptional attention to detail, maintaining the highest standards in histopathology solutions.",
+            "status": "publish",
+            "menuOrder": 0,
+            "meta": {
+                "_glintlab_team_role": "Chief Scientific Officer",
+                "_glintlab_team_link_url": "https://www.linkedin.com/in/oanh-nguyen-6a36032b3/"
+            },
+            "featuredImage": {
+                "file": "26-Histopathology-Oanh.webp",
+                "alt": "",
+                "mime": "image/webp"
+            }
+        },
+        {
+            "sourcePostId": 36,
+            "title": "Paul Katzman",
+            "content": "Paul brings a proven track record in business development and strategic account management within the preclinical and pharmaceutical research space. As the voice of the customer at Glint Lab, he ensures that client needs are deeply understood and translated into tailored histopathology and image analysis solutions that drive scientific progress.",
+            "status": "publish",
+            "menuOrder": 0,
+            "meta": {
+                "_glintlab_team_role": "Business Development Director",
+                "_glintlab_team_link_url": "https://www.linkedin.com/in/paul-katzman-tu/"
+            },
+            "featuredImage": {
+                "file": "36-Paul-Katzman.webp",
+                "alt": "",
+                "mime": "image/webp"
+            }
+        },
+        {
+            "sourcePostId": 38,
+            "title": "Quynh Anh Nguyen, PhD",
+            "content": "Quynh combines a strong foundation in scientific research, years of hands-on histopathology and imaging experience, and client-focused skills. At Glint Lab, she ensures seamless coordination between clients and scientists, translating research goals into actionable plans that deliver clarity, scientific rigor, and timely project execution.",
+            "status": "publish",
+            "menuOrder": 0,
+            "meta": {
+                "_glintlab_team_role": "Senior Scientific Manager",
+                "_glintlab_team_link_url": "https://www.linkedin.com/in/quynh-anh-nguyen-ph-d/"
+            },
+            "featuredImage": {
+                "file": "38-Histopathology-Design-35.webp",
+                "alt": "",
+                "mime": "image/webp"
+            }
+        },
+        {
+            "sourcePostId": 7,
+            "title": "Yisaiah Williams",
+            "content": "Demo text",
+            "status": "trash",
+            "menuOrder": 0,
+            "meta": {
+                "_glintlab_team_role": "Software Developer",
+                "_glintlab_team_link_url": "https://www.youtube.com"
+            },
+            "featuredImage": {
+                "file": "7-888496684215177216.webp",
+                "alt": "",
+                "mime": "image/webp"
+            }
+        },
+        {
+            "sourcePostId": 18,
+            "title": "Yisaiah Williams",
+            "content": "<!-- wp:paragraph -->\n<p>Misagh’s career spans biotechnology, IP law, and technology commercialization, enabling him to build long-term relationships and strategic collaborations to support Glint Lab’s growth. Backed by expertise in computational biology, virology, chemical engineering, and AI-driven solutions, he strives to position Glint Lab as a technologically advanced CRO offering cutting-edge solutions with unparalleled quality.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->",
+            "status": "trash",
+            "menuOrder": 0,
+            "meta": {
+                "_glintlab_team_role": "Software Developer",
+                "_glintlab_team_link_url": "https://youtube.com"
+            },
+            "featuredImage": {
+                "file": "18-FUduVPRVEAAIKuv.jpeg",
+                "alt": "",
+                "mime": "image/jpeg"
+            }
+        }
+    ]
+}

@@ -1,0 +1,35 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build plugin zip
+        run: |
+          set -euo pipefail
+          mkdir -p dist/glintlab-components
+          rsync -a --delete \
+            --exclude ".git" \
+            --exclude ".github" \
+            --exclude ".DS_Store" \
+            --exclude "__MACOSX" \
+            ./ dist/glintlab-components/
+          (cd dist && zip -r -q glintlab-components.zip glintlab-components)
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/glintlab-components.zip
+
