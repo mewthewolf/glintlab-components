@@ -1,5 +1,5 @@
 /* Base Link Wrapper */
-.glintlab-team-member-trigger {
+.wp-block-tiptip-hyperlink-group-block.glintlab-team-member-trigger {
   text-decoration: none;
   color: inherit;
   display: block;
@@ -8,7 +8,7 @@
 }
 
 /* Individual Card */
-.c-team-member {
+.glintlab-team-member-trigger .c-team-member {
   --card-bg: #0b1016;
   --dot: rgba(255, 255, 255, 0.03);
   --text: #ffffff;
@@ -32,13 +32,13 @@
   border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-.c-team-member:hover {
+.glintlab-team-member-trigger .c-team-member:hover {
   transform: translateY(-10px);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
   border-color: rgba(255, 255, 255, 0.1);
 }
 
-.c-team-member__summary {
+.glintlab-team-member-trigger .c-team-member__summary {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -48,7 +48,7 @@
 }
 
 /* Media/Image Handling */
-.c-team-member__media {
+.glintlab-team-member-trigger .c-team-member__media {
   position: relative;
   width: 240px;
   max-width: 100%;
@@ -59,7 +59,7 @@
   /* Breathing space after image */
 }
 
-.c-team-member__avatar {
+.glintlab-team-member-trigger .c-team-member__avatar {
   position: relative;
   z-index: 1;
   margin: 0;
@@ -69,11 +69,11 @@
   place-items: center;
 }
 
-.c-team-member__avatar::before {
+.glintlab-team-member-trigger .c-team-member__avatar::before {
   content: none;
 }
 
-.c-team-member__avatar img {
+.glintlab-team-member-trigger .c-team-member__avatar img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover;
@@ -82,7 +82,7 @@
   transition: filter 0.3s ease, transform 0.3s ease;
 }
 
-.c-team-member:hover .c-team-member__avatar img {
+.glintlab-team-member-trigger .c-team-member:hover .c-team-member__avatar img {
   filter: grayscale(0) saturate(1);
   transform: scale(1.05);
 }
@@ -90,7 +90,7 @@
 /* Avatar backdrop intentionally removed (image-only). */
 
 /* Typography */
-.c-team-member__name {
+.glintlab-team-member-trigger .c-team-member__name {
   margin: 0;
   font-size: 26px;
   line-height: 1.1;
@@ -100,7 +100,7 @@
   text-transform: uppercase;
 }
 
-.c-team-member__bio {
+.glintlab-team-member-trigger .c-team-member__bio {
   margin: 0;
   font-size: 16px;
   line-height: 1.5;

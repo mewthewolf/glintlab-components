@@ -59,5 +59,7 @@ function glintlab_components_enqueue_abg_features_assets()
 function glintlab_components_enqueue_editor_assets()
 {
 	wp_enqueue_style('glintlab-team-member-modal');
+	// Needed so trigger clicks don't navigate (e.g. href="#") and to allow previewing the modal in-editor.
+	wp_enqueue_script('glintlab-team-member-modal');
 }
 add_action('enqueue_block_editor_assets', 'glintlab_components_enqueue_editor_assets');
