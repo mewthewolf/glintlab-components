@@ -16,7 +16,7 @@ The importer will **skip** any Team Member post that already exists with the sam
 
 ## GitHub auto-updates (private repo)
 
-This plugin can update itself from a GitHub private repo release.
+This plugin can update itself from a GitHub repo release.
 
 1) Ensure the repo has a release tagged like `v0.2.0` with an asset named `glintlab-components.zip`.
 2) Configure the updater using either:
@@ -28,7 +28,7 @@ define('GLINTLAB_COMPONENTS_GITHUB_REPO', 'mewthewolf/glintlab-components');
 define('GLINTLAB_COMPONENTS_GITHUB_TOKEN', 'YOUR_FINE_GRAINED_TOKEN_HERE');
 ```
 
-The token needs access to that repository’s releases (repo read). Without the token, update checks are skipped.
+For **public repos**, the token is optional (it can help avoid GitHub API rate limits). For **private repos**, the token is required.
 
 ## Shortcodes
 

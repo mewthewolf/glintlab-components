@@ -118,13 +118,14 @@
       if (modal.dataset.open === "true" && e.key === "Escape") closeModal();
     });
 
-    // Universal Event Delegation
+    // Universal Event Delegation (scoped to this plugin's trigger wrapper)
     document.addEventListener("click", function (e) {
       const card = e.target.closest(".c-team-member");
       if (!card) return;
 
       const wrapper =
         card.closest(".glintlab-team-member-trigger, .wp-block-tiptip-hyperlink-group-block") || card;
+      if (!wrapper || !wrapper.classList || !wrapper.classList.contains("glintlab-team-member-trigger")) return;
       const linkUrl = wrapper.dataset.linkUrl;
 
       // Allow clicks on real links inside the card (if any remain)

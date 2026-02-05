@@ -146,11 +146,6 @@ function glintlab_components_updater_inject_update($transient)
 		return $transient;
 	}
 
-	$token = glintlab_components_updater_get_token();
-	if ('' === $token) {
-		return $transient;
-	}
-
 	$release = glintlab_components_updater_get_latest_release();
 	if (!$release) {
 		return $transient;
