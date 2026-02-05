@@ -1,0 +1,366 @@
+/* Base Link Wrapper */
+.glintlab-team-member-trigger {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  outline: none;
+  height: auto;
+}
+
+/* Individual Card */
+.c-team-member {
+  --card-bg: #0b1016;
+  --dot: rgba(255, 255, 255, 0.03);
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.65);
+  --blob-fill: #1a2029;
+  --blob-stroke: rgba(255, 255, 255, 0.15);
+
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 1px 1px, var(--dot) 1px, transparent 1px) 0 0 / 18px 18px,
+    var(--card-bg);
+  padding: 40px 24px;
+  color: var(--text);
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.c-team-member:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.c-team-member__summary {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  /* Tighter grouping for name/role */
+}
+
+/* Media/Image Handling */
+.c-team-member__media {
+  position: relative;
+  width: 240px;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  margin-bottom: 32px;
+  /* Breathing space after image */
+}
+
+.c-team-member__avatar {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.c-team-member__avatar::before {
+  content: none;
+}
+
+.c-team-member__avatar img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  border-radius: 999px;
+  filter: grayscale(1) saturate(0.5);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.c-team-member:hover .c-team-member__avatar img {
+  filter: grayscale(0) saturate(1);
+  transform: scale(1.05);
+}
+
+/* Avatar backdrop intentionally removed (image-only). */
+
+/* Typography */
+.c-team-member__name {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.1;
+  font-weight: 710;
+  color: #fff;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.c-team-member__bio {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--muted);
+  font-weight: 450;
+  max-width: 22ch;
+}
+
+/* Grid Layout */
+.glintlab-team-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--glintlab-columns, 3), minmax(0, 1fr));
+  gap: 2.5rem;
+  width: 100%;
+  margin: 4rem 0;
+  align-items: start;
+}
+
+.glintlab-team-grid-surface {
+  container: glintlab-team-grid / inline-size;
+}
+
+@container glintlab-team-grid (max-width: 900px) {
+  .glintlab-team-grid--cols-3,
+  .glintlab-team-grid--cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@container glintlab-team-grid (max-width: 560px) {
+  .glintlab-team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1080px) {
+  .glintlab-team-grid--cols-3,
+  .glintlab-team-grid--cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .glintlab-team-grid {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .glintlab-team-grid--cols-2,
+  .glintlab-team-grid--cols-3,
+  .glintlab-team-grid--cols-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .glintlab-team-grid {
+    gap: 1.5rem;
+  }
+}
+
+.glintlab-team-grid__item {
+  height: auto;
+}
+
+/* Modal Styling */
+.c-team-member-modal {
+  --abg-navy: #0a2342;
+  --abg-teal: #0f8b8d;
+  --abg-overlay: rgba(0, 0, 0, 0.75);
+  --abg-radius-xl: 24px;
+  --abg-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+
+  position: fixed;
+  inset: 0;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--abg-overlay);
+  z-index: 999999;
+  transition: opacity 400ms ease, visibility 400ms;
+}
+
+.c-team-member-modal[data-open="true"] {
+  opacity: 1;
+  visibility: visible;
+}
+
+.c-team-member-modal__panel {
+  width: min(880px, 100%);
+  max-height: min(92vh, 900px);
+  overflow: auto;
+  border-radius: var(--abg-radius-xl);
+  background: #0f1218;
+  color: #fff;
+  box-shadow: var(--abg-shadow);
+  padding: 64px;
+  transform: scale(0.95) translateY(30px);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  opacity: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.c-team-member-modal[data-open="true"] .c-team-member-modal__panel {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+.c-team-member-modal__layout {
+  display: flex;
+  gap: 56px;
+  align-items: flex-start;
+}
+
+.c-team-member-modal__aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.c-team-member-modal__link-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 800px) {
+  .c-team-member-modal__panel {
+    padding: 40px 24px;
+  }
+
+  .c-team-member-modal__layout {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+  }
+}
+
+.c-team-member-modal__photo {
+  width: 260px;
+  height: 260px;
+  border-radius: 20px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+.c-team-member-modal__content {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.c-team-member-modal__title {
+  font-size: clamp(32px, 5vw, 42px);
+  font-weight: 800;
+  margin: 0 0 12px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.c-team-member-modal__subtitle {
+  font-size: 20px;
+  color: var(--abg-teal);
+  font-weight: 600;
+  margin: 0 0 28px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.c-team-member-modal__body {
+  font-size: 19px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 40px;
+}
+
+.c-team-member-modal__footer {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+.c-team-member-modal__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 14px 28px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.c-team-member-modal__link:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Editor Logic (Gutenberg) */
+.glintlab-block-editor-wrapper.glintlab-team-grid {
+  padding: 3rem;
+  background: #05070a;
+  border-radius: 32px;
+}
+
+/* Force Gutenberg's inner-blocks container to act as a grid in the editor */
+.glintlab-team-grid .block-editor-inner-blocks>.block-editor-block-list__layout {
+  display: grid;
+  flex-wrap: wrap;
+  /* Fallback */
+  gap: 2.5rem;
+  grid-template-columns: repeat(var(--glintlab-columns, 3), 1fr);
+}
+
+/* Specific targeted fix for recent Gutenberg versions where inner container might be flex */
+.glintlab-team-grid .block-editor-block-list__layout {
+  display: grid;
+  grid-template-columns: repeat(var(--glintlab-columns, 3), 1fr);
+  gap: 2.5rem;
+}
+
+/* Locked Form Editor Styling */
+.glintlab-team-profile-header-editor {
+  background: #0f1218;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.glintlab-team-profile-header-editor label {
+  color: #6c8e98;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.glintlab-team-profile-header-editor .components-text-control__input {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #fff !important;
+  height: 52px !important;
+  border-radius: 10px !important;
+  padding: 0 20px !important;
+}
+
+.glintlab-team-profile-header-editor .components-text-control__input:focus {
+  border-color: var(--abg-teal, #0f8b8d) !important;
+  box-shadow: 0 0 0 2px rgba(15, 139, 141, 0.3) !important;
+}

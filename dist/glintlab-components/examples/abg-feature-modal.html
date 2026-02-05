@@ -1,0 +1,407 @@
+<!--
+  ABG Feature Cards + Modal (single-file embed)
+  Intended use: paste into a WordPress "Custom HTML" block, or serve this file and iframe it.
+  Note: some WP setups strip <script> tags in post content; if that happens, add via a shortcode/plugin or theme template.
+-->
+<div id="abg-features-root"></div>
+
+<style>
+  :root {
+    --abg-navy: #0a2342;
+    --abg-teal: #0f8b8d;
+    --abg-surface: #ffffff;
+    --abg-surface-2: #1f2937;
+    --abg-text: #111827;
+    --abg-text-muted: #6b7280;
+    --abg-overlay: rgba(0, 0, 0, 0.55);
+    --abg-radius-lg: 16px;
+    --abg-radius-xl: 20px;
+    --abg-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  }
+
+  #abg-features-root,
+  #abg-features-root * {
+    box-sizing: border-box;
+  }
+
+  .abg-features {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 24px 16px;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+      "Segoe UI Emoji";
+    color: var(--abg-text);
+  }
+
+  .abg-features__header h2 {
+    margin: 0 0 8px;
+    font-size: clamp(22px, 2.4vw, 32px);
+    font-weight: 650;
+    color: var(--abg-navy);
+    letter-spacing: -0.02em;
+  }
+
+  .abg-features__header p {
+    margin: 0 0 18px;
+    color: var(--abg-text-muted);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .abg-features__grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 14px;
+  }
+
+  .abg-feature {
+    grid-column: span 12;
+    border-radius: var(--abg-radius-lg);
+    padding: 18px 18px;
+    border: 1px solid rgba(17, 24, 39, 0.08);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .abg-feature:focus-visible {
+    outline: 3px solid rgba(15, 139, 141, 0.35);
+    outline-offset: 2px;
+  }
+
+  .abg-feature:hover {
+    transform: translateY(-2px);
+    border-color: rgba(15, 139, 141, 0.25);
+    box-shadow: 0 18px 38px rgba(10, 35, 66, 0.12);
+  }
+
+  .abg-feature__title {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: 650;
+    color: var(--abg-navy);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .abg-feature__arrow {
+    display: inline-block;
+    color: var(--abg-teal);
+    transform: translateX(0);
+    transition: transform 180ms ease;
+    font-weight: 700;
+  }
+
+  .abg-feature:hover .abg-feature__arrow {
+    transform: translateX(3px);
+  }
+
+  .abg-feature__desc {
+    margin: 0;
+    font-size: 15px;
+    color: var(--abg-text-muted);
+    line-height: 1.5;
+  }
+
+  @media (min-width: 640px) {
+    .abg-feature {
+      grid-column: span 6;
+      padding: 20px 20px;
+    }
+  }
+
+  @media (min-width: 960px) {
+    .abg-feature {
+      grid-column: span 3;
+      padding: 22px 22px;
+    }
+  }
+
+  .abg-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: var(--abg-overlay);
+    z-index: 999999;
+  }
+
+  .abg-modal[data-open="true"] {
+    display: flex;
+  }
+
+  .abg-modal__panel {
+    width: min(720px, 100%);
+    max-height: min(90vh, 920px);
+    overflow: auto;
+    border-radius: var(--abg-radius-xl);
+    background: rgba(16, 24, 39, 0.92);
+    color: rgba(255, 255, 255, 0.92);
+    box-shadow: var(--abg-shadow);
+    padding: 36px 32px;
+  }
+
+  .abg-modal__title {
+    margin: 0 0 16px;
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+  }
+
+  .abg-modal__desc {
+    margin: 0 0 22px;
+    font-size: 20px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .abg-modal__section-title {
+    margin: 24px 0 10px;
+    color: var(--abg-teal);
+    font-weight: 650;
+    font-size: 28px;
+    letter-spacing: -0.01em;
+  }
+
+  .abg-modal__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 14px;
+    font-size: 20px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.68);
+  }
+
+  .abg-modal__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .abg-modal__bullet {
+    color: var(--abg-teal);
+    font-weight: 800;
+    line-height: 1.2;
+    padding-top: 7px;
+  }
+
+  .abg-modal__footer {
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 14px;
+  }
+
+  @media (max-width: 420px) {
+    .abg-modal__panel {
+      padding: 28px 18px;
+    }
+    .abg-modal__section-title {
+      font-size: 24px;
+    }
+    .abg-modal__list {
+      font-size: 18px;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var data = [
+      {
+        icon: "briefcase",
+        title: "Investment Management",
+        description: "Managing investment vehicles for energy infrastructure",
+        keyBenefits: [
+          "Comprehensive portfolio oversight",
+          "Risk-adjusted return optimization",
+          "Institutional-grade governance",
+          "Transparent reporting standards",
+        ],
+        typicalOutcomes: [
+          "Enhanced capital efficiency",
+          "Diversified energy infrastructure exposure",
+          "Long-term value creation",
+          "Sustainable cash flow generation",
+        ],
+      },
+      {
+        icon: "factory",
+        title: "LNG & Energy Logistics",
+        description:
+          "Financing and structuring LNG export facilities, gas pipelines, and energy logistics networks",
+        keyBenefits: [
+          "End-to-end project development",
+          "Strategic location advantages",
+          "Integrated supply chain management",
+          "Advanced logistics coordination",
+        ],
+        typicalOutcomes: [
+          "Reduced transportation costs",
+          "Improved energy security",
+          "Enhanced regional connectivity",
+          "Accelerated market access",
+        ],
+      },
+      {
+        icon: "energy",
+        title: "Downstream Projects",
+        description:
+          "Supporting greenfield and brownfield downstream projects including petrochemicals, steel, and fertilisers",
+        keyBenefits: [
+          "Proven industrial expertise",
+          "Environmental compliance leadership",
+          "Technology integration capabilities",
+          "Operational excellence focus",
+        ],
+        typicalOutcomes: [
+          "Increased processing efficiency",
+          "Reduced environmental impact",
+          "Enhanced product quality",
+          "Strengthened market position",
+        ],
+      },
+      {
+        icon: "handshake",
+        title: "Strategic Coordination",
+        description: "Coordinating with developers, governments, and multilateral institutions",
+        keyBenefits: [
+          "Multi-stakeholder engagement",
+          "Regulatory expertise",
+          "Cultural and local knowledge",
+          "Diplomatic relationship management",
+        ],
+        typicalOutcomes: [
+          "Streamlined approval processes",
+          "Enhanced stakeholder buy-in",
+          "Reduced regulatory risk",
+          "Sustainable community partnerships",
+        ],
+      },
+    ];
+
+    function escapeHtml(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function buildList(items) {
+      return items
+        .map(function (t) {
+          return (
+            '<li><span class="abg-modal__bullet">•</span><span>' +
+            escapeHtml(t) +
+            "</span></li>"
+          );
+        })
+        .join("");
+    }
+
+    var root = document.getElementById("abg-features-root");
+    if (!root) return;
+
+    root.innerHTML =
+      '<section class="abg-features" aria-label="ABG capabilities">' +
+      '  <header class="abg-features__header">' +
+      '    <h2>Capabilities</h2>' +
+      '    <p>Tap a card to see details.</p>' +
+      "  </header>" +
+      '  <div class="abg-features__grid" role="list"></div>' +
+      "</section>" +
+      '<div class="abg-modal" id="abg-feature-modal" data-open="false" aria-hidden="true">' +
+      '  <div class="abg-modal__panel" role="dialog" aria-modal="true" aria-labelledby="abg-modal-title" tabindex="-1">' +
+      '    <h3 class="abg-modal__title" id="abg-modal-title"></h3>' +
+      '    <p class="abg-modal__desc" id="abg-modal-desc"></p>' +
+      '    <h4 class="abg-modal__section-title">Key Benefits:</h4>' +
+      '    <ul class="abg-modal__list" id="abg-modal-benefits"></ul>' +
+      '    <h4 class="abg-modal__section-title">Typical Outcomes:</h4>' +
+      '    <ul class="abg-modal__list" id="abg-modal-outcomes"></ul>' +
+      '    <div class="abg-modal__footer">Tap any open space to close</div>' +
+      "  </div>" +
+      "</div>";
+
+    var grid = root.querySelector(".abg-features__grid");
+    var modal = document.getElementById("abg-feature-modal");
+    var panel = modal.querySelector(".abg-modal__panel");
+    var titleEl = document.getElementById("abg-modal-title");
+    var descEl = document.getElementById("abg-modal-desc");
+    var benefitsEl = document.getElementById("abg-modal-benefits");
+    var outcomesEl = document.getElementById("abg-modal-outcomes");
+
+    var lastActiveEl = null;
+
+    function openModal(item) {
+      lastActiveEl = document.activeElement;
+      titleEl.textContent = item.title;
+      descEl.textContent = item.description;
+      benefitsEl.innerHTML = buildList(item.keyBenefits || []);
+      outcomesEl.innerHTML = buildList(item.typicalOutcomes || []);
+      modal.dataset.open = "true";
+      modal.setAttribute("aria-hidden", "false");
+      panel.focus();
+      document.documentElement.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      modal.dataset.open = "false";
+      modal.setAttribute("aria-hidden", "true");
+      document.documentElement.style.overflow = "";
+      if (lastActiveEl && typeof lastActiveEl.focus === "function") lastActiveEl.focus();
+      lastActiveEl = null;
+    }
+
+    function onKeyDown(e) {
+      if (modal.dataset.open !== "true") return;
+      if (e.key === "Escape") closeModal();
+    }
+
+    data.forEach(function (item, idx) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "abg-feature";
+      btn.setAttribute("role", "listitem");
+      btn.setAttribute("aria-haspopup", "dialog");
+      btn.setAttribute("data-index", String(idx));
+      btn.innerHTML =
+        '<div class="abg-feature__title">' +
+        "<span>" +
+        escapeHtml(item.title) +
+        '</span><span class="abg-feature__arrow" aria-hidden="true">→</span>' +
+        "</div>" +
+        '<p class="abg-feature__desc">' +
+        escapeHtml(item.description) +
+        "</p>";
+      btn.addEventListener("click", function () {
+        openModal(item);
+      });
+      grid.appendChild(btn);
+    });
+
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) closeModal();
+    });
+    panel.addEventListener("click", function (e) {
+      e.stopPropagation();
+    });
+    document.addEventListener("keydown", onKeyDown);
+  })();
+</script>
+

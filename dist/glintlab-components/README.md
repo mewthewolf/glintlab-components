@@ -19,9 +19,7 @@ The importer will **skip** any Team Member post that already exists with the sam
 This plugin can update itself from a GitHub private repo release.
 
 1) Ensure the repo has a release tagged like `v0.2.0` with an asset named `glintlab-components.zip`.
-2) Configure the updater using either:
-- WordPress admin: `Settings` → `GlintLab Components`, or
-- Constants in `wp-config.php`:
+2) On the WordPress site, add these constants (recommended in `wp-config.php`):
 
 ```php
 define('GLINTLAB_COMPONENTS_GITHUB_REPO', 'mewthewolf/glintlab-components');
