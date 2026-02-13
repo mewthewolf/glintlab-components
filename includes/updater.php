@@ -49,11 +49,6 @@ function glintlab_components_updater_get_token()
 
 function glintlab_components_updater_http_request_args($args, $url)
 {
-	$token = glintlab_components_updater_get_token();
-	if ('' === $token) {
-		return $args;
-	}
-
 	$host = wp_parse_url($url, PHP_URL_HOST);
 	if ('api.github.com' !== $host) {
 		return $args;
@@ -63,7 +58,11 @@ function glintlab_components_updater_http_request_args($args, $url)
 		$args['headers'] = array();
 	}
 
-	$args['headers']['Authorization'] = 'token ' . $token;
+	$token = glintlab_components_updater_get_token();
+	if ('' !== $token) {
+		$args['headers']['Authorization'] = 'token ' . $token;
+	}
+
 	$args['headers']['User-Agent'] = 'WordPress/' . get_bloginfo('version') . '; ' . home_url('/');
 
 	// Release asset downloads require this accept header.
