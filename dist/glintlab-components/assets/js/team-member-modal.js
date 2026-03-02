@@ -119,44 +119,49 @@
     });
 
     // Universal Event Delegation (scoped to this plugin's trigger wrapper)
-    document.addEventListener("click", function (e) {
-      const card = e.target.closest(".c-team-member");
-      if (!card) return;
+    // Use capture so this still works if other scripts stop propagation.
+    document.addEventListener(
+      "click",
+      function (e) {
+        const wrapper = e.target.closest(".glintlab-team-member-trigger");
+        if (!wrapper) return;
 
-      const wrapper =
-        card.closest(".glintlab-team-member-trigger, .wp-block-tiptip-hyperlink-group-block") || card;
-      if (!wrapper || !wrapper.classList || !wrapper.classList.contains("glintlab-team-member-trigger")) return;
-      const linkUrl = wrapper.dataset.linkUrl;
+        const card = wrapper.querySelector(".c-team-member");
+        if (!card) return;
 
-      // Allow clicks on real links inside the card (if any remain)
-      const link = e.target.closest("a");
-      if (link && card.contains(link)) {
-        const href = link.getAttribute("href");
-        if (href && href !== "#" && !href.startsWith("javascript:")) {
-          return;
+        const linkUrl = wrapper.dataset.linkUrl;
+
+        // Allow clicks on real links inside the card (if any remain)
+        const link = e.target.closest("a");
+        if (link && card.contains(link) && link !== wrapper) {
+          const href = link.getAttribute("href");
+          if (href && href !== "#" && !href.startsWith("javascript:")) {
+            return;
+          }
         }
-      }
 
-      e.preventDefault();
+        e.preventDefault();
 
-      const title = card.querySelector(".c-team-member__name");
-      const subtitle = card.querySelector(".c-team-member__bio");
-      const description = card.querySelector(".c-team-member__description");
-      const img = card.querySelector(".c-team-member__avatar img");
+        const title = card.querySelector(".c-team-member__name");
+        const subtitle = card.querySelector(".c-team-member__bio");
+        const description = card.querySelector(".c-team-member__description");
+        const img = card.querySelector(".c-team-member__avatar img");
 
-      if (!title) return;
+        if (!title) return;
 
-      openModal({
-        titleText: title.textContent.trim(),
-        subtitleText: subtitle ? subtitle.textContent.trim() : "",
-        bodyHtml: description ? description.innerHTML || "" : "",
-        photoSrc: img ? img.src : "",
-        photoAlt: img ? img.alt : "",
-        linkUrl: linkUrl,
-        triggerCard: card,
-        triggerWrapper: wrapper,
-      });
-    });
+        openModal({
+          titleText: title.textContent.trim(),
+          subtitleText: subtitle ? subtitle.textContent.trim() : "",
+          bodyHtml: description ? description.innerHTML || "" : "",
+          photoSrc: img ? img.src : "",
+          photoAlt: img ? img.alt : "",
+          linkUrl: linkUrl,
+          triggerCard: card,
+          triggerWrapper: wrapper,
+        });
+      },
+      true
+    );
   };
 
   if (document.readyState === "loading") {

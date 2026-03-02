@@ -15,16 +15,16 @@ if (!defined('ABSPATH')) {
 function glintlab_components_register_team_cpt()
 {
 	$labels = array(
-		'name' => _x('Team Members', 'post type general name', 'glintlab-components'),
+		'name' => _x('Team Member', 'post type general name', 'glintlab-components'),
 		'singular_name' => _x('Team Member', 'post type singular name', 'glintlab-components'),
-		'menu_name' => _x('Team Members', 'admin menu', 'glintlab-components'),
+		'menu_name' => _x('Team Member', 'admin menu', 'glintlab-components'),
 		'add_new' => _x('Add New', 'team member', 'glintlab-components'),
 		'add_new_item' => __('Add New Team Member', 'glintlab-components'),
 		'new_item' => __('New Team Member', 'glintlab-components'),
 		'edit_item' => __('Edit Team Member', 'glintlab-components'),
 		'view_item' => __('View Team Member', 'glintlab-components'),
-		'all_items' => __('All Team Members', 'glintlab-components'),
-		'search_items' => __('Search Team Members', 'glintlab-components'),
+		'all_items' => __('All Team Member', 'glintlab-components'),
+		'search_items' => __('Search Team Member', 'glintlab-components'),
 		'not_found' => __('No team members found.', 'glintlab-components'),
 		'not_found_in_trash' => __('No team members found in Trash.', 'glintlab-components'),
 	);

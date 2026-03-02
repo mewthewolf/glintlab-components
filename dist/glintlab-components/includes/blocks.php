@@ -31,6 +31,7 @@ function glintlab_components_register_blocks()
         'editor_style' => 'glintlab-team-member-modal',
         'style' => 'glintlab-team-member-modal',
         'script' => 'glintlab-team-member-modal',
+        'view_script' => 'glintlab-team-member-modal',
         'render_callback' => 'glintlab_components_render_team_grid_block',
         'supports' => array(
             'align' => array('wide', 'full'),
@@ -52,6 +53,7 @@ function glintlab_components_register_blocks()
         'parent' => array('glintlab/team-grid'),
         'editor_script' => 'glintlab-team-blocks',
         'script' => 'glintlab-team-member-modal',
+        'view_script' => 'glintlab-team-member-modal',
         'render_callback' => 'glintlab_components_render_team_member_block',
         'attributes' => array(
             'memberId' => array(
